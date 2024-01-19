@@ -9,14 +9,10 @@ const port = 3000;
 
 // Use CORS middleware
 app.use(cors());
+app.use(express.json());
 
-app.route('/')
-   .get((req, res) => {
-      res.send('Hello World!')
-   })
-   .post((req, res) => {
-      res.send('Received a POST request')
-   });
+app.use('/api/auth',require('./routes/auth'));
+app.use('/api/notes',require('./routes/notes'));
 
 app.listen(port, () => {
    console.log(`Example app listening on port ${port}`);
